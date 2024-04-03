@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Container, HStack } from '@chakra-ui/react';
@@ -27,7 +28,7 @@ const Stocks = () => {
         console.log(response.data.data); // Log the response data
 
         if (response.data && response.data.data) {
-          setStocks(response.data.data.slice(0,99)); // Set all stocks
+          setStocks(response.data.data.slice(0,9)); // Set all stocks
           setLoading(false);
         } else {
           throw new Error('Invalid data format received from the API');

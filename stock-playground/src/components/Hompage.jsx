@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Container, HStack } from '@chakra-ui/react';
-import { Typography, Statistic } from 'antd'; // Importing Statistic from Ant Design
+"use client";
+
+import { Container, HStack } from "@chakra-ui/react";
+import { Statistic, Typography } from "antd";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Loader from "./Loader";
+import LottieAnimation from "./LottieAnimation";
 
 const { Title } = Typography;
 
@@ -28,7 +31,7 @@ const Homepage = () => {
         if (response.data && response.data.data) {
           setHomepage(response.data.data); // Set the fetched stocks
           setLoading(false);
-          // console.log(response.data);
+          console.log(response.data);
         } else {
           throw new Error('Invalid data format received from the API');
         }
@@ -44,20 +47,27 @@ const Homepage = () => {
 
   return (
     <>
-      <Title level={2} className="heading">Stocks stats</Title>
-      <Container maxW={"container.xl"}>
-        {loading ? (
-          <Loader />
-        ) : error ? (
-          <div>{error}</div>
-        ) : homepage.length === 0 ? (
-          <div>No data available</div>
-        ) : (
-          <HStack spacing={4}>
-            <Statistic title="Total stocks" value={homepage.length} />
-          </HStack>
-        )}
-      </Container>
+    {/* <LottieAnimation/> */}
+      <div className="flex flex-col  items-center" >
+
+
+        <Title level={2} className="heading">Stocks stats</Title>
+        <div className="flex items-center h-96 mb-28">
+          <Container maxW={"container.xl"}>
+            {loading ? (
+              <Loader />
+            ) : error ? (
+              <div>{error}</div>
+            ) : homepage.length === 0 ? (
+              <div>No data available</div>
+            ) : (
+              <HStack spacing={4}>
+                <Statistic title="Total stocks" value={homepage.length} />
+              </HStack>
+            )}
+          </Container>
+        </div>
+      </div>
     </>
   );
 };

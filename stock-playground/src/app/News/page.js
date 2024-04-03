@@ -1,8 +1,10 @@
+import News from "@/components/News";
+
 const page = () => {
     return (
-        <div>
-            Enter
-        </div>
+        <>
+        <News/>
+        </>
     );
 }
 

@@ -1,3 +1,5 @@
+"use client";
+import React, { Component } from "react";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import * as am5stock from "@amcharts/amcharts5/stock";
@@ -127,8 +129,8 @@ class Demodatachart extends Component {
       am5.net
         .load(
           "https://www.amcharts.com/wp-content/uploads/assets/docs/stock/" +
-            ticker +
-            ".csv"
+          ticker +
+          ".csv"
         )
         .then(function (result) {
           var data = am5.CSVParser.parse(result.response, {

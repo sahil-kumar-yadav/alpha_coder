@@ -29,7 +29,7 @@ const Navbar = () => {
     <Divider type="vertical" />
      <Menu theme="dark" >
           <Menu.Item icon={<HomeOutlined/>}>
-            <Link href='/'>Home</Link>
+            <Link href='/Home'>Home</Link>
           </Menu.Item>
           
           <Menu.Item icon={<FundOutlined/>}>
@@ -38,10 +38,10 @@ const Navbar = () => {
 
         <SubMenu key="sub1" icon={<DollarTwoTone />} title="stocks Trends"> 
           <Menu.Item icon={<StockOutlined/>}>
-            <Link href='/trend'>Trend</Link>
+            <Link href='/StockTrends'>Trend</Link>
           </Menu.Item>
           <Menu.Item icon={<StockOutlined/>}>
-            <Link href='/demochart'>DemoChart</Link>
+            <Link href='/Demochart'>DemoChart</Link>
           </Menu.Item>
           
          </SubMenu>

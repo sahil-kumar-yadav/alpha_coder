@@ -1,7 +1,9 @@
+import DemoChart from "@/components/DemoChart";
+
 const page = () => {
     return (
         <div>
-            Enter
+            <DemoChart/>
         </div>
     );
 }

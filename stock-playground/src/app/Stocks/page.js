@@ -1,8 +1,8 @@
+import Stocks from "@/components/Stocks";
+
 const page = () => {
     return (
-        <div>
-            Enter
-        </div>
+        <Stocks/>
     );
 }
 

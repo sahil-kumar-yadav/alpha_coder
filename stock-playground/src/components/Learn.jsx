@@ -1,3 +1,4 @@
+"use clinet";
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { Spinner } from '@chakra-ui/react';
