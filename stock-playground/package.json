@@ -9,10 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.6",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@kinde-oss/kinde-auth-nextjs": "^2.2.3",
+    "antd": "^5.16.0",
+    "axios": "^1.6.8",
+    "chart.js": "^4.4.2",
+    "framer": "^2.4.1",
+    "framer-motion": "^11.0.24",
+    "millify": "^6.1.0",
+    "moment": "^2.30.1",
     "mongoose": "^8.2.4",
+    "motion": "^10.17.0",
     "next": "14.1.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "web-vitals": "^3.5.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
