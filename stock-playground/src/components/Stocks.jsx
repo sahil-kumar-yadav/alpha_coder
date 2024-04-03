@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Container, HStack } from '@chakra-ui/react';
 import { Typography } from 'antd';
 import Loader from "./Loader";
+import LottieAnimation from './LottieAnimation';
 
 const { Title } = Typography;
 
@@ -69,7 +70,8 @@ const Stocks = () => {
       <Title level={2} className="heading">Stocks Stats</Title>
       <Container maxW={"container.xl"}>
         {loading ? (
-          <Loader />
+          <LottieAnimation/>
+          // <Loader />
         ) : error ? (
           <div>{error}</div>
         ) : stocks.length === 0 ? (

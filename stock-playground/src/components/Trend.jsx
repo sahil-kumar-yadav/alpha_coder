@@ -8,7 +8,7 @@ const { Title } = Typography;
 
 function Trend() {
   return (
-    <div className="App">
+    <div className="App h-96">
       
       <Title  level={2} className="heading">STOCKS TRENDS</Title>
       <TradingViewWidget />

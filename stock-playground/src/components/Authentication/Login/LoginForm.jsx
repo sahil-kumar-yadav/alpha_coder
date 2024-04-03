@@ -5,14 +5,14 @@ import { FaUser, FaLock } from 'react-icons/fa';
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 import '../auth.css';
-import { auth } from '@/firebase/firebaseInit';
+import { auth } from '@/components/firebase/firebaseInit';
 import Link from 'next/link';
 // import { useRouter } from 'next/router';
 
 
 const LoginForm = ({ isAuthenticated }) => {
 
-    const router = useRouter();
+    // const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 

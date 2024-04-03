@@ -16,17 +16,19 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <ChakraProvider>
-          
-          <div className="flex h-full">
-            <div className="w-1/3">
-              <Navbar />
+          <div className="flex flex-col min-h-screen">
+            <div className="flex-grow">
+              <div className="flex h-full">
+                <div className="w-1/3">
+                  <Navbar />
+                </div>
+                <div className="w-2/3">
+                  {children}
+                </div>
+              </div>
             </div>
-            <div className="w-2/3">
-              {children}
-            </div>
-
+            <Footer />
           </div>
-          <Footer />
         </ChakraProvider>
       </body>
     </html>

@@ -10,7 +10,7 @@ import LoginForm from "@/components/Authentication/Login/LoginForm";
 import SignUpForm from "@/components/Authentication/SignUp/SignUpForm";
 
 export default function Home() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   const handleLogin = () => {
     // Perform login logic (you may use a function from your AuthContext)
@@ -25,9 +25,11 @@ export default function Home() {
 
   return (
     <>
-      {
+   
+      {/* {
         isAuthenticated ? <SignUpForm /> : <LoginForm isAuthenticated={isAuthenticated} />
-      }
+      } */}
+      <Homepage/>
     </>
   );
 }

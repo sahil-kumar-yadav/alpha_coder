@@ -42,26 +42,13 @@ export default function Profile() {
                         <dd className="text-gray-700 sm:col-span-2">100</dd>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-1 p-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4">
-                        <dt className="font-medium text-gray-900">Salary</dt>
-                        <dd className="text-gray-700 sm:col-span-2">₹ 1,000,000+</dd>
-                    </div>
-
-                    <div className="grid grid-cols-1 gap-1 p-3 even:bg-gray-50 sm:grid-cols-3 sm:gap-4">
-                        <dt className="font-medium text-gray-900">Bio</dt>
-                        <dd className="text-gray-700 sm:col-span-2">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et facilis debitis explicabo
-                            doloremque impedit nesciunt dolorem facere, dolor quasi veritatis quia fugit aperiam
-                            aspernatur neque molestiae labore aliquam soluta architecto?
-                        </dd>
-                    </div>
                 </dl>
             </div>
             {/* // purchased stocks  */}
-            <h1 className=" mt-2 mb-2 text-center font-bold text-3xl">Purchased stocks </h1>
+            <h1 className=" mt-2 mb-2 text-center font-bold text-3xl">Positions </h1>
             <article className="flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6">
                 <div>
-                    <p className="text-lg ">IBM</p> 
+                    <p className="text-lg ">IBM</p>
                     {/* quantity  */}
                     <p className="text-sm text-gray-500">Profit</p>
 
@@ -90,7 +77,7 @@ export default function Profile() {
 
             <article className="flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6">
                 <div>
-                <p className="text-lg ">IBM</p>
+                    <p className="text-lg ">IBM</p>
                     <p className="text-sm text-gray-500">Profit</p>
 
                     <p className="text-2xl font-medium text-gray-900">₹ 240.94</p>

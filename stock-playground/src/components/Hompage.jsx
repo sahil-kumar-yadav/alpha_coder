@@ -4,7 +4,7 @@ import { Container, HStack } from "@chakra-ui/react";
 import { Statistic, Typography } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Loader from "./Loader";
+// import Loader from "./Loader";
 import LottieAnimation from "./LottieAnimation";
 
 const { Title } = Typography;
@@ -55,7 +55,8 @@ const Homepage = () => {
         <div className="flex items-center h-96 mb-28">
           <Container maxW={"container.xl"}>
             {loading ? (
-              <Loader />
+              <LottieAnimation/>
+              
             ) : error ? (
               <div>{error}</div>
             ) : homepage.length === 0 ? (
