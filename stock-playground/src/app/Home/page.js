@@ -1,8 +1,10 @@
+import Homepage from "@/components/Hompage";
+
 const page = () => {
     return (
-        <div>
-            Enter
-        </div>
+       <>
+       <Homepage/>
+       </>
     );
 }
 

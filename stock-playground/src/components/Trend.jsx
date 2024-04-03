@@ -1,19 +1,25 @@
-import { Line } from 'react-chartjs-2';
+import React from 'react'
 
-const Chart = ({ stocks }) => {
-  // Extracting price and date data from the stocks array
-  const prices = stocks.map((stock) => stock.price); // Assuming 'price' is the key for the stock prices
-  const dates = stocks.map((stock) => stock.date); // Assuming 'date' is the key for the stock dates
+import TradingViewWidget from './TradingViewWidget';
+import { Typography } from 'antd';
 
-  // Chart data
-  const data = {
-    labels: dates,
-    datasets: [
-      {
-        label: 'Stock Prices',
-        data: prices,
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-    ],
-  };
+const { Title } = Typography;
+
+function Trend() {
+  return (
+    <div className="App">
+      
+      <Title  level={2} className="heading">STOCKS TRENDS</Title>
+      <TradingViewWidget />
+      <style jsx>{`
+        .full-page {
+          height: 100vh;
+          width: 100vw;
+          overflow: hidden;
+          position: relative;
+        }
+      `}</style>
+    </div>
+  );
+}
+export default Trend;
