@@ -9,13 +9,7 @@ function Tutorials() {
                 <Card maxW='sm'>
                     <CardBody>
                         <AspectRatio maxW='400px' ratio={4 / 3}>
-                            <iframe width="560" height="315"
-                                src="Stocks.mp4"
-                                title="YouTube video player"
-                                frameborder="0"
-                                allow="accelerometer;
-                            muted;
-                             clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <video src="/Stocks.mp4" controls></video>
                         </AspectRatio>
                         <Stack mt='6' spacing='3'>
                             <Heading size='md'>Intro to Stocks</Heading>
@@ -33,7 +27,7 @@ function Tutorials() {
                 <Card maxW='sm'>
                     <CardBody>
                         <AspectRatio maxW='400px' ratio={4 / 3}>
-                        <video src="/Investing.mp4autoplay=0" controls></video>
+                        <video src="/Freedom.mp4" controls></video>
                            
 
                         </AspectRatio>

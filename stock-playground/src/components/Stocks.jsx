@@ -1,17 +1,22 @@
 "use client";
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, HStack } from '@chakra-ui/react';
+import { Container, VStack, Input, CardHeader, Heading, CardBody, Stack, Box, Text, StackDivider, Card } from '@chakra-ui/react';
 import { Typography } from 'antd';
-import Loader from "./Loader";
-import LottieAnimation from './LottieAnimation';
-
+import Loader from './Loader';
 const { Title } = Typography;
 
-const server = 'https://twelve-data1.p.rapidapi.com';
-const apiKey = 'afabb71cfbmsh1a4717288c634bfp1c6ab6jsnb0c860962033'; // Replace this with your actual API key
+const options = {
+  method: 'GET',
+  url: 'https://latest-stock-price.p.rapidapi.com/any',
+  headers: {
+    'X-RapidAPI-Key': 'afabb71cfbmsh1a4717288c634bfp1c6ab6jsnb0c860962033',
+    'X-RapidAPI-Host': 'latest-stock-price.p.rapidapi.com'
+  }
+};
 
-const Stocks = () => {
+function Stocks() {
   const [stocks, setStocks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,79 +24,99 @@ const Stocks = () => {
   useEffect(() => {
     const fetchStocks = async () => {
       try {
-        const response = await axios.get(`${server}/stocks`, {
-          headers: {
-            'X-RapidAPI-Host': 'twelve-data1.p.rapidapi.com',
-            'X-RapidAPI-Key': apiKey
-          }
-        });
-
-        console.log(response.data.data); // Log the response data
-
-        if (response.data && response.data.data) {
-          setStocks(response.data.data.slice(0,9)); // Set all stocks
-          setLoading(false);
-        } else {
-          throw new Error('Invalid data format received from the API');
-        }
+        const response = await axios.request(options);
+        console.log(response.data);
+        setStocks(response.data.slice(200, 299)); // Set stocks data in state
+        setLoading(false); // Set loading to false when data is fetched
       } catch (error) {
-        console.error('Error fetching stock data:', error);
-        setError('Failed to fetch stock data. Please try again later.');
-        setLoading(false);
+        console.error(error);
+        setError(error); // Set error state if there is an error during fetching
+        setLoading(false); // Set loading to false when error occurs
       }
-    };
+    }
 
     fetchStocks();
   }, []);
 
   return (
     <>
-      <style>
-        {`
-        .stock-card {
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          padding: 10px;
-          width: 200px;
-          margin-bottom: 20px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
 
-        .stock-info {
-          font-size: 14px;
-          line-height: 1.6;
-        }
-
-        .heading {
-          margin-bottom: 20px;
-        }
-        `}
-      </style>
-      <Title level={2} className="heading">Stocks Stats</Title>
-      <Container maxW={"container.xl"}>
+      <Container maxW="container.md">
+        <Title level={2} className="text-3xl font-bold mb-6">Stocks Stats</Title>
+        <Input placeholder="Search..." className="w-full mb-6" />
         {loading ? (
-          <LottieAnimation/>
-          // <Loader />
+          <Loader />
         ) : error ? (
-          <div>{error}</div>
-        ) : stocks.length === 0 ? (
-          <div>No data available</div>
+          <div>Error: {error.message}</div>
         ) : (
-          <HStack wrap={"wrap"} spacing={4}>
-            {stocks.map(stock => (
-              <div key={stock.symbol} className="stock-card">
-                <div className="stock-info">
-                  <div>Name: {stock.name}</div>
-                  <div>Symbol: {stock.symbol}</div>
-                  <div>Type: {stock.type}</div>
-                  <div>Country: {stock.country}</div>
-                  <div>Currency: {stock.currency}</div>
-                </div>
+          <VStack spacing="6" align="stretch">
+            {stocks.map((stock, index) => (
+              <div key={index}>
+                <Card>
+                 
+
+                  <CardBody>
+                    <h1 className=' font-bold mb-3 border-b-2 text-center border-r-4'>Company: <span className='text-blue-700 mb-1'>{stock?.identifier} </span> </h1>
+                    <Stack divider={<StackDivider />} spacing='4'>
+                      <Box>
+                        <div className='flex gap-1'>
+                          <h2 className=' font-bold'>Symbol: </h2>
+                          <p>{stock?.symbol}</p>
+                        </div>
+                      </Box>
+                      <Box>
+                        <div className='flex gap-1'>
+                          <h2 className=' font-bold'>Open: </h2>
+                          <p>{stock?.open}</p>
+                        </div>
+                      </Box>
+                      <Box>
+                        <div className='flex gap-1'>
+                          <h2 className=' font-bold'>Change: </h2>
+                          <p>{stock?.change}</p>
+                        </div>
+                      </Box>
+                     
+                      <Box>
+                        <div className='flex gap-1'>
+                          <h2 className=' font-bold'>Day High: </h2>
+                          <p>{stock?.dayHigh}</p>
+                        </div>
+                      </Box>
+                      <Box>
+                        <div className='flex gap-1'>
+                          <h2 className=' font-bold'>Day Low: </h2>
+                          <p>{stock?.dayLow}</p>
+                        </div>
+                      </Box>
+                      <Box>
+                        <div className='flex gap-1'>
+                          <h2 className=' font-bold'>Last Update Time: </h2>
+                          <p>{stock?.lastUpdateTime}</p>
+                        </div>
+                      </Box>
+                     
+                    </Stack>
+                  </CardBody>
+                </Card>
               </div>
+
+              // <div key={index} className={`bg-gray-100 p-6 rounded-md shadow-md ${index % 2 === 0 ? 'bg-gray-200' : 'bg-gray-300'}`}>
+              //   <p className="text-sm mb-2">Company: {stock?.identifier}</p>
+              //   <p className="text-sm mb-2">Symbol: {stock?.symbol}</p>
+              //   <p className="text-sm mb-2">Open: {stock?.open}</p>
+              //   <p className="text-sm mb-2">Change: {stock?.change}</p>
+              //   <p className="text-sm mb-2">Day High: {stock?.dayHigh}</p>
+              //   <p className="text-sm mb-2">Day Low: {stock?.dayLow}</p>
+              //   <p className="text-sm mb-2">Last Update Time: {stock?.lastUpdateTime}</p>
+              // </div>
+
+
             ))}
-          </HStack>
+          </VStack>
         )}
       </Container>
+
     </>
   );
 };

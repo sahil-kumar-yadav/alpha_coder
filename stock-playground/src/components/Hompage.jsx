@@ -2,10 +2,12 @@
 
 import { Container, HStack } from "@chakra-ui/react";
 import { Statistic, Typography } from "antd";
-import axios from "axios";
 import { useEffect, useState } from "react";
-// import Loader from "./Loader";
-import LottieAnimation from "./LottieAnimation";
+import Loader from "./Loader";
+import News from "./News";
+import Link from "next/link";
+import Stocks from "./Stocks";
+import Storhome from "./StoreHome";
 
 const { Title } = Typography;
 
@@ -21,17 +23,19 @@ const Homepage = () => {
     const fetchHomepage = async () => {
       try {
         const response = await axios.get(`${server}/stocks`, {
+          params: {
+            limit: 10 // Limit the number of results to 10
+          },
           headers: {
             'X-RapidAPI-Host': 'twelve-data1.p.rapidapi.com',
             'X-RapidAPI-Key': apiKey
           }
         });
 
-        // Check if the response contains the expected data structure
         if (response.data && response.data.data) {
-          setHomepage(response.data.data); // Set the fetched stocks
+          const limitedData = response.data.data.slice(0, 10); // Limit the data to 10 items
+          setHomepage(limitedData);
           setLoading(false);
-          console.log(response.data);
         } else {
           throw new Error('Invalid data format received from the API');
         }
@@ -47,28 +51,30 @@ const Homepage = () => {
 
   return (
     <>
-    {/* <LottieAnimation/> */}
-      <div className="flex flex-col  items-center" >
+      <Title level={2} className="heading">Stocks stats</Title>
+      <Container maxW={"container.xl"}>
+        
+          <HStack spacing={4}>
+            <Statistic title="Total stocks" value={141598} />
+          </HStack>
+      </Container>
 
-
-        <Title level={2} className="heading">Stocks stats</Title>
-        <div className="flex items-center h-96 mb-28">
-          <Container maxW={"container.xl"}>
-            {loading ? (
-              <LottieAnimation/>
-              
-            ) : error ? (
-              <div>{error}</div>
-            ) : homepage.length === 0 ? (
-              <div>No data available</div>
-            ) : (
-              <HStack spacing={4}>
-                <Statistic title="Total stocks" value={homepage.length} />
-              </HStack>
-            )}
-          </Container>
-        </div>
+      <div className="home-heading-container">
+        <Title level={2} className="home-title" text-aling="centre">Top Stocks </Title>
+        <Title level={3} className="show-more"><Link href="/Stocks">Show more</Link></Title>
       </div>
+      <Storhome/>
+      {/* <Stocks /> */}
+
+      <div className="home-heading-container">
+        <Title level={2} className="home-title">Top 10 Stock News</Title>
+        <Title level={3} className="show-more">
+
+          <Link href="/" >Show more</Link>
+
+        </Title>
+      </div>
+      <News simplified />
     </>
   );
 };

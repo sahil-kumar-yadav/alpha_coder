@@ -1,6 +1,10 @@
+import { Spin } from "antd"
+
 const Loader = () => {
     return (
-      <div>Loader</div>
+      <div>
+        <Spin/>
+      </div>
     )
   }
   

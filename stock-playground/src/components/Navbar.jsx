@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Menu, Typography, Avatar, Divider } from 'antd';
-import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined, UserOutlined, KeyOutlined, StockOutlined, DollarTwoTone, NodeIndexOutlined, YoutubeOutlined, FileTextOutlined } from "@ant-design/icons";
+import { HomeOutlined, MoneyCollectOutlined, BulbOutlined, FundOutlined, MenuOutlined, UserOutlined, KeyOutlined, StockOutlined, DollarTwoTone, NodeIndexOutlined, YoutubeOutlined, FileTextOutlined, CodepenOutlined, WechatOutlined } from "@ant-design/icons";
 // import icon from "../images/download (5).jpeg";
 import SubMenu from 'antd/es/menu/SubMenu';
 import { useState } from 'react';
@@ -27,7 +27,7 @@ const Navbar = () => {
       </div>
 
       <Divider type="vertical" />
-      <Menu theme="dark" >
+      <Menu theme="dark">
         <Menu.Item icon={<HomeOutlined />}>
           <Link href='/Home'>Home</Link>
         </Menu.Item>
@@ -47,7 +47,6 @@ const Navbar = () => {
         </SubMenu>
 
         <SubMenu key="sub2" icon={<KeyOutlined />} title="Knowledge">
-
           <Menu.Item icon={<YoutubeOutlined />}>
             <Link href='/Tutorials'> Tutorials</Link>
           </Menu.Item>
@@ -61,10 +60,14 @@ const Navbar = () => {
 
         </SubMenu>
 
-
-
+        <Menu.Item icon={<CodepenOutlined />}>
+          <Link href='http://127.0.0.1:5500/Test.html'>Game</Link>
+        </Menu.Item>
         <Menu.Item icon={<BulbOutlined />}>
           <Link href='/News'>News</Link>
+        </Menu.Item>
+        <Menu.Item icon={<WechatOutlined />}>
+          <Link href='/CommunityPost'>Community Post</Link>
         </Menu.Item>
         <Menu.Item icon={<UserOutlined />}>
           <Link href='/MyStockVerse'>MyStockVerse</Link>
